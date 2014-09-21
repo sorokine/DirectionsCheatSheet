@@ -1,28 +1,87 @@
 \documentclass[tikz]{standalone}
 
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+
 \begin{document}
 
 \begin{tikzpicture}
   \draw[step=0.5, lightgray, very thin] (-2,-2) grid (18,18); 
-  \coordinate (y) at (0,17);
-  \coordinate (x) at (17,0);
-  \draw[<->] (y) node[above] {$y$} -- (0,0) -- (x) node[right] {$x$};
+
+  \coordinate (y) at (0,16);
+  \coordinate (x) at (16,0);
+  \draw[fill] (0,0) circle [radius=2pt] node [below left] {(0,0)};
+  \draw[<->] (y) node[above] {\Large $y$} -- (0,0) -- (x) node[right] {\Large $x$};
   \draw[step=3] (3,3) grid (15,15);
 
+  % directions
   \path 
     coordinate (center) at (9,9)
-    coordinate (north)  at (9,17)
-    coordinate (south)  at (9,1)
-    coordinate (east)   at (1,9)
-    coordinate (west)   at (17,9)
+
+    coordinate (N)  at (9,17)
+    coordinate (NE) at (16.5,16.5)
+    coordinate (E)  at (17,9)
+    coordinate (SE) at (16.5,1.5)
+    coordinate (S)  at (9,1)
+    coordinate (SW) at (1.5,1.5)
+    coordinate (W)  at (1,9)
+    coordinate (NW) at (1.5,16.5)
+
+    % corners
+    node (n)  at (9,15) {}
+    node (ne) at (15,15) {}
+    node (e)  at (15,9) {}
+    node (se) at (15,3) {}
+    node (s)  at (9,3) {}
+    node (sw) at (3,3) {}
+    node (w)  at (3,9) {}
+    node (nw) at (3,15) {}
   ;
 
   \draw[fill] (center) circle [radius=2pt];
-  \draw[->, very thick] (center) -- (north) node[above] {\Huge\fontfamily{pzc}\selectfont{}N};
-  \draw[->, very thick] (center) -- (south) node[below] {\Huge\fontfamily{pzc}\selectfont{}S};
-  \draw[->, very thick] (center) -- (east) node[left] {\Huge\fontfamily{pzc}\selectfont{}E};
-  \draw[->, very thick] (center) -- (west) node[right] {\Huge\fontfamily{pzc}\selectfont{}W};
+  \draw[->, very thick] (center) -- (N) node[above] {{\Huge\fontencoding{T1}\fontfamily{pzc}\selectfont{}N}$_0$};
+  \draw[->, very thick] (ne) -- (NE) node[above] {{\Huge\fontencoding{T1}\fontfamily{pzc}\selectfont{}NE}$_1$};
+  \draw[->, very thick] (center) -- (E) node[above right] {{\Huge\fontencoding{T1}\fontfamily{pzc}\selectfont{}E}$_2$};
+  \draw[->, very thick] (se) -- (SE) node[below right] {{\Huge\fontencoding{T1}\fontfamily{pzc}\selectfont{}SE}$_3$};
+  \draw[->, very thick] (center) -- (S) node[below] {{\Huge\fontencoding{T1}\fontfamily{pzc}\selectfont{}S}$_4$};
+  \draw[->, very thick] (sw) -- (SW) node[below left] {{\Huge\fontencoding{T1}\fontfamily{pzc}\selectfont{}SW}$_5$};
+  \draw[->, very thick] (center) -- (W) node[left] {{\Huge\fontencoding{T1}\fontfamily{pzc}\selectfont{}W}$_6$};
+  \draw[->, very thick] (nw) -- (NW) node[above left] {{\Huge\fontencoding{T1}\fontfamily{pzc}\selectfont{}NW}$_7$};
 
+  % long names of directions
+  \draw (n) node[above right, align=left]  {north\\above\\top\\up};
+  \draw (n) node[above left,  align=right] {север\\над\\верх};
+  \draw (e) node[above right, align=left]  {east\\right\\next\\ahead};
+  \draw (e) node[below right, align=right] {восток\\справа\\вперед};
+  \draw (s) node[below right, align=left]  {south\\below\\bottom\\down};
+  \draw (s) node[below left,  align=right] {юг\\под\\низ};
+  \draw (w) node[above left,  align=left]  {west\\left\\prev\\back};
+  \draw (w) node[below left, align=right]  {запад\\слева\\назад};
+
+  % row and column numbering
+  \draw[fill] (nw) circle [radius=2pt];
+  \draw (nw) node [above right] {columns $\rightarrow$};
+  \draw (nw) node [below left,align=right] {rows\\$\downarrow$};
+
+  \foreach \col[count=\coli from 0] in {3,3.5,4,4.5,5,5.5}
+    \draw (\col,15) node [below right] {\coli};
+  \foreach \row[count=\rowi from 1] in {14.5,14,13.5,13,12.5}
+    \draw (3,\row) node [below right] {\rowi};
+
+  % tile numbering
+
+  % rows and cols (1,1), (-1,0)
+
+  % сено солома
+
+  % degrees
+
+  % additional directions
+
+  % longitude/latitude
+
+  % coordinates/rows increase/decrease
 
 \end{tikzpicture}
 

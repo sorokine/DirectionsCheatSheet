@@ -1,18 +1,24 @@
-\documentclass[tikz]{standalone}
+\documentclass{standalone}
 
 \usepackage[T2A,T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english,russian]{babel}
+\usepackage{amsmath}
+
+\usepackage{tikz}
+\usepackage{pgfmath}
 
 \begin{document}
 
 \begin{tikzpicture}
   \draw[step=0.5, lightgray, very thin] (-2,-2) grid (18,18); 
 
+  % TODO: fonts, arrows
+
   \coordinate (y) at (0,16);
   \coordinate (x) at (16,0);
   \draw[fill] (0,0) circle [radius=2pt] node [below left] {(0,0)};
-  \draw[<->] (y) node[above] {\Large $y$} -- (0,0) -- (x) node[right] {\Large $x$};
+  \draw[<->] (y) node[above] {\Large $y$} -- (0,0) -- (x) node[right] {\Large $x$}; 
   \draw[step=3] (3,3) grid (15,15);
 
   % directions
@@ -56,7 +62,7 @@
   \draw (e) node[below right, align=right] {восток\\справа\\вперед};
   \draw (s) node[below right, align=left]  {south\\below\\bottom\\down};
   \draw (s) node[below left,  align=right] {юг\\под\\низ};
-  \draw (w) node[above left,  align=left]  {west\\left\\prev\\back};
+  \draw (w) node[above left,  align=right]  {west\\left\\prev\\back};
   \draw (w) node[below left, align=right]  {запад\\слева\\назад};
 
   % row and column numbering
@@ -64,12 +70,17 @@
   \draw (nw) node [above right] {columns $\rightarrow$};
   \draw (nw) node [below left,align=right] {rows\\$\downarrow$};
 
-  \foreach \col[count=\coli from 0] in {3,3.5,4,4.5,5,5.5}
-    \draw (\col,15) node [below right] {\coli};
-  \foreach \row[count=\rowi from 1] in {14.5,14,13.5,13,12.5}
-    \draw (3,\row) node [below right] {\rowi};
+  \foreach \col[count=\coli from 0] in {3,3.5,...,14.5}
+    \draw (\col,15) node [below right] {\small\coli};
+  \foreach \row[count=\rowi from 1] in {14.5,14,...,3.5}
+    \draw (3,\row) node [below right] {\small\rowi};
 
   % tile numbering
+  \foreach \tile in {0,1,...,15} {
+    \pgfmathparse{13.5 - 3 * mod(\tile,4)} \let\trow\pgfmathresult
+    \pgfmathparse{4.5 + 3 * int(\tile/4)} \let\tcol\pgfmathresult
+    \draw (\tcol, \trow) node {\Large\tile};
+  }
 
   % rows and cols (1,1), (-1,0)
 

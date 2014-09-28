@@ -5,6 +5,8 @@
 \usepackage[english,russian]{babel}
 \usepackage{amsmath}
 
+\renewcommand{\familydefault}{\sfdefault}
+
 \usepackage{tikz}
 \usepackage{pgfmath}
 
@@ -46,9 +48,9 @@
   ;
 
   \draw[fill] (center) circle [radius=2pt];
-  \draw[->, very thick] (center) -- (N) node[above] {{\Huge\fontencoding{T1}\fontfamily{pzc}\selectfont{}N}$_0$};
+  \draw[->, very thick] (center) -- (N) node[above, align=right] {{\Huge\fontencoding{T1}\fontfamily{pzc}\selectfont{}N}$_0$};
   \draw[->, very thick] (ne) -- (NE) node[above] {{\Huge\fontencoding{T1}\fontfamily{pzc}\selectfont{}NE}$_1$};
-  \draw[->, very thick] (center) -- (E) node[above right] {{\Huge\fontencoding{T1}\fontfamily{pzc}\selectfont{}E}$_2$};
+  \draw[->, very thick] (center) -- (E) node[right] {{\Huge\fontencoding{T1}\fontfamily{pzc}\selectfont{}E}$_2$};
   \draw[->, very thick] (se) -- (SE) node[below right] {{\Huge\fontencoding{T1}\fontfamily{pzc}\selectfont{}SE}$_3$};
   \draw[->, very thick] (center) -- (S) node[below] {{\Huge\fontencoding{T1}\fontfamily{pzc}\selectfont{}S}$_4$};
   \draw[->, very thick] (sw) -- (SW) node[below left] {{\Huge\fontencoding{T1}\fontfamily{pzc}\selectfont{}SW}$_5$};
@@ -65,6 +67,9 @@
   \draw (w) node[above left,  align=right]  {west\\left\\prev\\back};
   \draw (w) node[below left, align=right]  {запад\\слева\\назад};
 
+  % rows and cols (1,1), (-1,0)
+  %\draw (N) node [below right] {$(0,-1)$};
+
   % row and column numbering
   \draw[fill] (nw) circle [radius=2pt];
   \draw (nw) node [above right] {columns $\rightarrow$};
@@ -77,12 +82,10 @@
 
   % tile numbering
   \foreach \tile in {0,1,...,15} {
-    \pgfmathparse{13.5 - 3 * mod(\tile,4)} \let\trow\pgfmathresult
-    \pgfmathparse{4.5 + 3 * int(\tile/4)} \let\tcol\pgfmathresult
+    \pgfmathparse{13.5 - 3 * int(\tile/4)} \let\trow\pgfmathresult
+    \pgfmathparse{ 4.5 + 3 * mod(\tile,4)} \let\tcol\pgfmathresult
     \draw (\tcol, \trow) node {\Large\tile};
   }
-
-  % rows and cols (1,1), (-1,0)
 
   % сено солома
 

@@ -9,6 +9,7 @@
 
 \usepackage{tikz}
 \usepackage{pgfmath}
+\usetikzlibrary{positioning}
 
 \begin{document}
 
@@ -57,15 +58,71 @@
   \draw[->, very thick] (center) -- (W) node[left] {{\Huge\fontencoding{T1}\fontfamily{pzc}\selectfont{}W}$_6$};
   \draw[->, very thick] (nw) -- (NW) node[above left] {{\Huge\fontencoding{T1}\fontfamily{pzc}\selectfont{}NW}$_7$};
 
-  % long names of directions
-  \draw (n) node[above right, align=left]  {north\\above\\top\\up};
-  \draw (n) node[above left,  align=right] {север\\над\\верх};
-  \draw (e) node[above right, align=left]  {east\\right\\next\\ahead};
-  \draw (e) node[below right, align=right] {восток\\справа\\вперед\\солома};
-  \draw (s) node[below right, align=left]  {south\\below\\bottom\\down};
-  \draw (s) node[below left,  align=right] {юг\\под\\низ};
-  \draw (w) node[above left,  align=right]  {west\\left\\prev\\back};
-  \draw (w) node[below left, align=right]  {запад\\слева\\назад\\сено};
+  % long names of directions, English/Russian
+  \draw (n) node[above right, align=left] {%
+    \begin{tabular}{ll}
+      north & kita \\
+      above \\
+      top \\
+      up
+    \end{tabular}%
+  };
+  \draw (n) node[above left,  align=right] {%
+    \begin{tabular}{rr}
+      север\\
+      над\\
+      верх\\
+      вверх% 
+    \end{tabular}%
+  };
+  \draw (e) node[above right, align=left]  {%
+    \begin{tabular}{ll}
+      east\\
+      right\\
+      next\\
+      ahead%
+    \end{tabular}%
+  };
+  \draw (e) node[below right, align=right] {%
+    \begin{tabular}{ll}
+      восток\\
+      справа\\
+      вперед\\
+      солома%
+    \end{tabular}%
+  };
+  \draw (s) node[below right, align=left]  {%
+    \begin{tabular}{ll}
+      south\\
+      below\\
+      bottom\\
+      down%
+    \end{tabular}%
+  };
+  \draw (s) node[below left,  align=right] {%
+    \begin{tabular}{rr}
+      юг\\
+      под\\
+      низ\\
+      вниз% 
+    \end{tabular}%
+  };
+  \draw (w) node[above left,  align=right] {%
+    \begin{tabular}{rr}
+      west\\
+      left\\
+      prev\\
+      back%
+    \end{tabular}%
+  };
+  \draw (w) node[below left, align=right]  {%
+    \begin{tabular}{rr}
+      запад\\
+      слева\\
+      назад\\
+      сено%
+    \end{tabular}%
+  };
 
   % rows and cols (1,1), (-1,0)
   %\draw (N) node [below right] {$(0,-1)$};
@@ -94,6 +151,7 @@
   % longitude/latitude
 
   % coordinates/rows increase/decrease
+  \draw [arrows=<-, line width=1pt] (9,9) ++(138:5mm) --++(60:-1pt) arc (-220:40:5mm);
 
   % clockwise/counterclockwise
 

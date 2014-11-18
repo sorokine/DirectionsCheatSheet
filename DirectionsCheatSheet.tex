@@ -1,16 +1,16 @@
-\documentclass{standalone}
+\documentclass[tikz]{standalone}
 
 \usepackage[T2A,T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english,russian]{babel}
 \usepackage{amsmath}
 
+\usepackage{url}
 \usepackage{CJKutf8}
-\usepackage[mark]{gitinfo2}
 
 \renewcommand{\familydefault}{\sfdefault}
+\usepackage{gitinfo2}
 
-\usepackage{tikz}
 \usepackage{pgfmath}
 \usetikzlibrary{positioning}
 
@@ -169,6 +169,10 @@
   % clockwise/counterclockwise
 
   % TODO: add git version and generation date
+  \draw (18, -2) node [above left, align=right] {\scriptsize 
+    \url{https://github.com/sorokine/DirectionsCheatSheet}\\
+    gitinfo:
+    \gitBranch \gitDirty \gitAbbrevHash \gitAuthorIsoDate \gitAuthorName};
 
 \end{tikzpicture}
 

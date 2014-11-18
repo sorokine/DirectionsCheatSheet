@@ -1,6 +1,7 @@
 # Directions Cheat Sheet
 
-Directions and odering in English, Japanese, Mandarin, and Russian.
+Direction names and cell odering in 
+English, Japanese, Mandarin, and Russian.
 
 ## Requirements
 
